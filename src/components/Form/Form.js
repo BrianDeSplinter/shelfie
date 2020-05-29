@@ -1,4 +1,5 @@
 import React, {Component} from 'react'
+import axios from 'axios'
 import './Form.css'
 
 class Form extends Component {
@@ -17,7 +18,7 @@ class Form extends Component {
         })
     }
 
-    handelPriceChange(e) {
+    handlePriceChange(e) {
         this.setState({
             price: e.target.value
         })
@@ -29,31 +30,36 @@ class Form extends Component {
         })
     }
 
-    postNewProduct() {
-
-    }
-
     cancelInput(){
         this.setState({
             name: '',
             price: 0,
             imgurl: ''
         })
+        document.getElementById('name').value= ''
+        document.getElementById('price').value= ''
+        document.getElementById('img').value= ''
     }
 
+    addProduct(name, price, imgurl){
+        const body = {name, price, imgurl}
+        axios.post('/api/product', body).then((res) => {
+            this.props.componentDidMount()
+        })
+    }
 
     render() {
         return(
             <div>
                 <div>Form</div>
                 <div className='inputs'>
-                    <input onChange={(e) => this.handleNameChange(e)} placeholder='Name'/>
-                    <input onChange={(e) => this.handlePriceChange(e)} placeholder='Price'/>
-                    <input onChange={(e) => this.handleImageChange(e)} placeholder='Image URL'/>
+                    <input id='name' onChange={(e) => this.handleNameChange(e)} placeholder='Name'/>
+                    <input id='price' type="number" onChange={(e) => this.handlePriceChange(e)} placeholder='Price'/>
+                    <input id='img' onChange={(e) => this.handleImageChange(e)} placeholder='Image URL'/>
                 </div>
                 <div className='buttons'>
                     <button onClick={()=> this.cancelInput()}>Cancel</button>
-                    <button>Add to Inventory</button>
+                    <button onClick={() => this.addProduct(this.state.name, this.state.imgurl, this.state.price)}>Add to Inventory</button>
                 </div>
             </div>
         )
