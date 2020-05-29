@@ -4,15 +4,3 @@ create table inventory(
     price decimal,
     product_image text
 );
-
-
-
--- insert into inventory(
---     product_name,
---     product_image,
---     price
--- ) values (
---     'Stuff',
---     'https://www.responsesource.com/content/uploads/2016/06/Stuff.jpg',
---     10.99
--- );
