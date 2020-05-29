@@ -1,3 +1,10 @@
+.form{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    height: 500px;
+}
+
 .inputs{
     display: flex;
     flex-direction: column;

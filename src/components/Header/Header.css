@@ -1,4 +1,7 @@
-/* div{
+.header{
     height: 50px;
     background-color: #AB2A19;
-} */
+    margin-bottom: 50px;
+    color: white;
+    font-size: xx-large;
+}
