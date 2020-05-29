@@ -6,9 +6,10 @@ class Dashboard extends Component {
     render(){
         const productMap = this.props.products.map(e => (
             <Product 
-                name={e.name}
+                key={e.product_id}
+                name={e.product_name}
                 price={e.price}
-                imgurl={e.imgurl}
+                imgurl={e.product_image}
             />
         ))
         return(
