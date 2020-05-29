@@ -6,9 +6,9 @@ class Form extends Component {
     constructor () {
         super()
         this.state = {
-            name: '',
+            product_name: '',
             price: 0,
-            imgurl: ''
+            product_image: ''
         }
     }
 
@@ -30,7 +30,7 @@ class Form extends Component {
         })
     }
 
-    cancelInput(){
+    cancelInput() {
         this.setState({
             name: '',
             price: 0,
@@ -41,16 +41,19 @@ class Form extends Component {
         document.getElementById('img').value= ''
     }
 
-    addProduct(name, price, imgurl){
-        const body = {name, price, imgurl}
+    addProduct(product_name,product_image, price){
+        const body = {product_name, product_image, price}
         axios.post('/api/product', body).then((res) => {
             this.props.componentDidMount()
         })
+        document.getElementById('name').value= ''
+        document.getElementById('price').value= ''
+        document.getElementById('img').value= ''
     }
 
     render() {
         return(
-            <div>
+            <div className='form'>
                 <div>Form</div>
                 <div className='inputs'>
                     <input id='name' onChange={(e) => this.handleNameChange(e)} placeholder='Name'/>
@@ -59,7 +62,7 @@ class Form extends Component {
                 </div>
                 <div className='buttons'>
                     <button onClick={()=> this.cancelInput()}>Cancel</button>
-                    <button onClick={() => this.addProduct(this.state.name, this.state.imgurl, this.state.price)}>Add to Inventory</button>
+                    <button onClick={() => this.addProduct(this.state.product_name, this.state.product_image, this.state.price)}>Add to Inventory</button>
                 </div>
             </div>
         )
