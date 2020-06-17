@@ -30,10 +30,10 @@ class App extends Component {
         <div className="content">
           <Dashboard 
             products={this.state.products} 
-            componentDidMount= {this.componentDidMount}
+            componentDidMount={this.componentDidMount}
           />
           <Form 
-            componentDidMount= {this.componentDidMount}
+            componentDidMount={this.componentDidMount}
           />
         </div>
       </div>
