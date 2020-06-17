@@ -14,7 +14,7 @@ class Form extends Component {
 
     handleNameChange(e) {
         this.setState({
-            name: e.target.value
+            product_name: e.target.value
         })
     }
 
@@ -26,22 +26,22 @@ class Form extends Component {
 
     handleImageChange(e) {
         this.setState({
-            imgurl: e.target.value
+            product_image: e.target.value
         })
     }
 
     cancelInput() {
         this.setState({
-            name: '',
+            product_name: '',
             price: 0,
-            imgurl: ''
+            product_image: ''
         })
         document.getElementById('name').value= ''
         document.getElementById('price').value= ''
         document.getElementById('img').value= ''
     }
 
-    addProduct(product_name,product_image, price){
+    addProduct(product_name, product_image, price){
         const body = {product_name, product_image, price}
         axios.post('/api/product', body).then((res) => {
             this.props.componentDidMount()
@@ -61,7 +61,7 @@ class Form extends Component {
                     <input id='img' onChange={(e) => this.handleImageChange(e)} placeholder='Image URL'/>
                 </div>
                 <div className='buttons'>
-                    <button onClick={()=> this.cancelInput()}>Cancel</button>
+                    <button onClick={() => this.cancelInput()}>Cancel</button>
                     <button onClick={() => this.addProduct(this.state.product_name, this.state.product_image, this.state.price)}>Add to Inventory</button>
                 </div>
             </div>
