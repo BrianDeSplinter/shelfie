@@ -3,16 +3,16 @@ module.exports = {
        const db = req.app.get('db')
        
        db.get_inventory()
-       .then(products => res.status(200).send(products))
+       .then(inventory => res.status(200).send(inventory))
        .catch(err => res.status(500).send(err))
     },
 
     addProduct: (req, res) => {
-        const {product_name, product_img, price} = req.body
+        const {product_name, product_image, price} = req.body
 
         const db = req.app.get('db')
 
-        db.add_product(product_name, product_img, price)
+        db.add_product(product_name, product_image, price)
         .then(product => res.status(200).send(product))
         .catch(err => res.status(500).send(err))
     },
