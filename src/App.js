@@ -9,7 +9,8 @@ class App extends Component {
   constructor() {
     super()
     this.state = {
-      products: []
+      products: [],
+      current: null
     }
 
     this.componentDidMount = this.componentDidMount.bind(this)
@@ -33,6 +34,7 @@ class App extends Component {
             componentDidMount={this.componentDidMount}
           />
           <Form 
+            current={this.state.current}
             componentDidMount={this.componentDidMount}
           />
         </div>
